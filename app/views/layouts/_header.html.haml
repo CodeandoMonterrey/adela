@@ -14,7 +14,7 @@
       %ul.nav.navbar-nav.navbar-right
         = render partial: '/layouts/shared/signed_in_menu' if user_signed_in?
   - if session[:from_admin]
-    .alert.alert-danger
+    .alert.alert-danger.main-alert
       %span.danger
       Estás en ADELA como
       %strong= "#{current_user.name} #{"de #{current_organization.title}" if current_organization}."
