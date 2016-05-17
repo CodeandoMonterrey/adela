@@ -1,11 +1,12 @@
 - breadcrumb :inventory_new_dataset
-= nested_form_for [:inventories, Dataset.new] do |f|
+= nested_form_for [:inventories, @dataset] do |f|
   .row
     .col-md-9
       %h3 Agrega un Conjunto de Datos
+      - if @dataset.errors.any?
+        = render partial: '/layouts/shared/errors', locals: { errors: @dataset.errors }
   .row
     .col-md-9
-      %br
       .form-group.required
         = f.label :title, class: 'control-label'
         = f.text_field :title, required: true, class: 'form-control', 'data-toggle': 'tooltip', title: "#{t('tooltip.dataset.title')}"

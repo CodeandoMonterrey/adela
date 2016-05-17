@@ -5,6 +5,11 @@ module DatasetActions
     before_action :create_catalog, only: :create
   end
 
+  def new
+    @dataset = Dataset.new
+    @dataset.catalog = current_organization.catalog
+  end
+
   def create
     @dataset = current_organization.catalog.datasets.create(dataset_params)
     create_customization if create_customization.present?

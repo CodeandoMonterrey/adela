@@ -11,8 +11,13 @@ class Inventories::DatasetsController < ApplicationController
   private
 
   def create_customization
-    redirect_to inventories_path
-    return
+    if @dataset.valid?
+      redirect_to inventories_path
+      return
+    else
+      render :new
+      return
+    end
   end
 
   def update_customization
