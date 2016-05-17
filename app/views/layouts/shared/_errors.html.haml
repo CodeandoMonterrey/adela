@@ -1,0 +1,6 @@
+.alert.alert-danger{role: 'alert'}
+  %p
+    %strong ¡Hay errores en el formulario!
+  - errors.messages.each do |element, messages|
+    - messages.each do |message|
+      %p - #{message.html_safe}
