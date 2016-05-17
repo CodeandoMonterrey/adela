@@ -109,6 +109,10 @@ es:
             inventory_elements:
               duplicated: "Todos los recursos de un mismo conjunto de datos deben de estar agrupados."
               invalid: "Las filas del inventario de datos son inválidas."
+        dataset:
+          attributes:
+            title:
+              taken: 'El <strong>Nombre del Conjunto de Datos</strong> debe de ser único. Existe otro Conjunto de Datos con el nombre <strong>"%{title}"</strong>.'
     attributes:
       user:
         name: "Nombre"

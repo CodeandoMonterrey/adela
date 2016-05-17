@@ -9,6 +9,8 @@ class Dataset < ActiveRecord::Base
   accepts_nested_attributes_for :dataset_sector
   accepts_nested_attributes_for :distributions, allow_destroy: true
 
+  validate :duplicated_titles
+
   with_options on: :inventory do |dataset|
     dataset.validates :title, :contact_position, :public_access, :publish_date, presence: true
   end
@@ -30,6 +32,10 @@ class Dataset < ActiveRecord::Base
   end
 
   private
+
+  def duplicated_titles
+    errors.add(:title, :taken, title: title) if catalog.datasets.map(&:title).include?(title)
+  end
 
   def sectors
     catalog.organization.sectors.map(&:slug).join(',')
